@@ -1,0 +1,6 @@
+{
+  "name": "Restaurant El Maestro - Menu & Commande en Ligne par QR Code",
+  "description": "Menu digital et système de commande sur table pour le Restaurant El Maestro à Abomey-Calavi (Bénin). Accès direct par QR code, commande smartphone et suivi cuisine en temps réel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

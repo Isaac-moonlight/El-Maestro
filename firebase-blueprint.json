@@ -1,0 +1,94 @@
+{
+  "entities": {
+    "order": {
+      "title": "Order",
+      "description": "Represents a customer order placed from a table or takeaway",
+      "type": "object",
+      "properties": {
+        "orderNumber": {
+          "type": "string",
+          "description": "Unique human readable order number"
+        },
+        "tableNumber": {
+          "type": "string",
+          "description": "Table identifier e.g. Table 4"
+        },
+        "orderType": {
+          "type": "string",
+          "description": "dine_in or takeaway"
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Name or identifier of the customer"
+        },
+        "customerPhone": {
+          "type": "string",
+          "description": "Optional customer phone or WhatsApp number"
+        },
+        "items": {
+          "type": "string",
+          "description": "Serialized JSON array of order items"
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "Total amount in FCFA"
+        },
+        "status": {
+          "type": "string",
+          "description": "pending, preparing, ready, served, cancelled"
+        },
+        "paymentMethod": {
+          "type": "string",
+          "description": "cash_table, mobile_money, cashier"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Special chef instructions"
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Unix timestamp in ms"
+        },
+        "updatedAt": {
+          "type": "number",
+          "description": "Unix timestamp in ms"
+        }
+      },
+      "required": ["orderNumber", "tableNumber", "totalAmount", "status", "createdAt"]
+    },
+    "waiterCall": {
+      "title": "WaiterCall",
+      "description": "Represents a table calling a waiter for assistance or bill",
+      "type": "object",
+      "properties": {
+        "tableNumber": {
+          "type": "string",
+          "description": "Table number making the call"
+        },
+        "reason": {
+          "type": "string",
+          "description": "addition, service, eau, question"
+        },
+        "status": {
+          "type": "string",
+          "description": "pending or resolved"
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Unix timestamp in ms"
+        }
+      },
+      "required": ["tableNumber", "reason", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/orders/{orderId}": {
+      "schema": "order",
+      "description": "Collection of all restaurant orders"
+    },
+    "/waiterCalls/{callId}": {
+      "schema": "waiterCall",
+      "description": "Collection of active table calls for waitstaff"
+    }
+  }
+}
